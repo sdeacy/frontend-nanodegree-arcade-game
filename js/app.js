@@ -23,7 +23,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = this.x + (this.speed * dt*50);
+    this.x = this.x + (this.speed * dt * 50);
     if(this.x > 505) {
         this.x = -150;
     }
@@ -48,19 +48,21 @@ var Player = function() {
 
 Player.prototype.update = function(key) {
 
+
     if(this.key === "left" && this.x >20) {
-        this.x -= 50;
+        this.x -= 40;
         this.key = null;
-    } else if (this.key === "up" && this.y >20) {
-        this.y -= 50;
+    } else if (this.key === "up") {
+        this.y -= 40;
         this.key = null;
     } else if (this.key === "right" && this.x <400) {
-        this.x += 50;
+        this.x += 40;
         this.key = null;
     }else if (this.key === "down" && this.y < 400) {
-        this.y += 50;
+        this.y += 40;
         this.key = null;
     }
+
 
 };
 
@@ -69,7 +71,9 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(key) {
+    console.log(key);
     this.key = key;
+
 };
 
 
