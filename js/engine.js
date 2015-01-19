@@ -50,6 +50,7 @@ var Engine = (function(global) {
         update(dt);
         render();
 
+
         /* Set our lastTime variable which is used to determine the time delta
          * for the next time this function is called.
          */
@@ -68,9 +69,10 @@ var Engine = (function(global) {
     function init() {
         reset();
         lastTime = Date.now();
+        timer();
         main();
     }
-    
+
 
     /* This function is called by main (our game loop) and itself calls all
      * of the functions which may need to update entity's data. Based on how
@@ -174,6 +176,18 @@ var Engine = (function(global) {
         });
 
         player.render();
+    }
+
+    function timer(){
+        var time = 30;
+        var timer = setInterval(function() {
+            $('#timer span').text(time--);
+            if (time < 0 ) {
+                clearInterval(timer);
+                alert("Time up");
+                reset();
+            }
+        }, 1000);
     }
 
     /* This function does nothing but it could have been a good place to

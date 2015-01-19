@@ -9,3 +9,7 @@ body {
 #chooseCharacter img {
     max-height: 120px;
 }
+
+#timer span {
+    font-size: 45px;
+}
