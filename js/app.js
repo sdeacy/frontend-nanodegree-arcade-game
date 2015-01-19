@@ -47,22 +47,19 @@ var Player = function() {
 }
 
 Player.prototype.update = function(key) {
-
-
     if(this.key === "left" && this.x >20) {
-        this.x -= 40;
+        this.x -= 20;
         this.key = null;
     } else if (this.key === "up") {
-        this.y -= 40;
+        this.y -= 20;
         this.key = null;
     } else if (this.key === "right" && this.x <400) {
-        this.x += 40;
+        this.x += 20;
         this.key = null;
     }else if (this.key === "down" && this.y < 400) {
-        this.y += 40;
+        this.y += 20;
         this.key = null;
     }
-
 
 };
 
@@ -73,8 +70,12 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(key) {
     console.log(key);
     this.key = key;
-
 };
+
+Player.prototype.chooseCharacter = function (id) {
+    player.sprite = "images/" + id + ".png";
+};
+
 
 
 // Now instantiate your objects.
@@ -97,7 +98,8 @@ document.addEventListener('keyup', function(e) {
         37: 'left',
         38: 'up',
         39: 'right',
-        40: 'down'
+        40: 'down',
+        49 : "1"
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
