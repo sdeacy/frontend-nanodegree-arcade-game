@@ -24,11 +24,13 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
+        lastTime,
+        canvasContainer = document.querySelector("#canvasContainer");
+
 
     canvas.width = 505;
     canvas.height = 606;
-    doc.body.appendChild(canvas);
+    canvasContainer.appendChild(canvas);
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
      */
@@ -64,15 +66,11 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
-        //chooseCharacter();
         reset();
         lastTime = Date.now();
         main();
     }
-    //function chooseCharacter(id) {
-    //    this.sprite = "images/" + id + ".png";
-    //    console.log(this.sprite);
-    //}
+    
 
     /* This function is called by main (our game loop) and itself calls all
      * of the functions which may need to update entity's data. Based on how
