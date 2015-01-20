@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Effective JavaScript: Frogger</title>
+    <meta charset="utf-8"/>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="bootstrap-3.3.2-dist/css/bootstrap.css">
 </head>
@@ -15,11 +16,11 @@
     <div class="row">
         <div id="chooseCharacter" class="col-md-3">
                 <ul>
-                    <li><img id="char-boy" src="images/char-boy.png" onclick="player.chooseCharacter(id);"></li>
-                    <li><img id="char-cat-girl" src="images/char-cat-girl.png" onclick="player.chooseCharacter(id);"></li>
-                    <li><img id="char-horn-girl" src="images/char-horn-girl.png" onclick="player.chooseCharacter(id);"></li>
-                    <li><img id="char-pink-girl" src="images/char-pink-girl.png" onclick="player.chooseCharacter(id);"></li>
-                    <li><img id="char-princess-girl" src="images/char-princess-girl.png" onclick="player.chooseCharacter(id);"></li>
+                    <li><img id="char-boy" src="images/char-boy.png" alt="char-boy" onclick="player.chooseCharacter(id);"></li>
+                    <li><img id="char-cat-girl" src="images/char-cat-girl.png" alt="char-cat-girl" onclick="player.chooseCharacter(id);"></li>
+                    <li><img id="char-horn-girl" src="images/char-horn-girl.png" alt="char-horn-girl" onclick="player.chooseCharacter(id);"></li>
+                    <li><img id="char-pink-girl" src="images/char-pink-girl.png" alt="char-pink-girl" onclick="player.chooseCharacter(id);"></li>
+                    <li><img id="char-princess-girl" src="images/char-princess-girl.png" alt="char-princess-girl" onclick="player.chooseCharacter(id);"></li>
                 </ul>
             <p>Click to select your character</p>
         </div>
@@ -29,10 +30,10 @@
         <div class="col-md-3 gameInfo">
             <h4>Time left</h4>
             <p id="timer">0</p>
-            <h4>Score:<p id="score">0</p></h4>
-            <h4>High Score:<p id="highScore"></p> </h4>
-
-
+            <h4>Score:</h4>
+            <p id="score">0</p>
+            <h4>High Score: </h4>
+            <p id="highScore"></p>
         </div>
     </div>
 

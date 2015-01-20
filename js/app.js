@@ -29,12 +29,12 @@ Enemy.prototype.update = function(dt) {
     }
     //console.log("this.x " + this.x);
 
-}
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -45,7 +45,7 @@ var Player = function() {
     this.x = 250;
     this.y = 350;
     this.score = 0;
-}
+};
 
 Player.prototype.update = function(key) {
     if(this.key === "left" && this.x >20) {
