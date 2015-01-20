@@ -8,3 +8,14 @@ frontend-nanodegree-arcade-game
 - when 30 seconds are up, player has the option to play again, or quit the game. If player quits the game, player must
 refresh the page to start again.
 
+
+Resources used:
+
+http://diveintohtml5.info/storage.html
+http://stackoverflow.com/
+https://developer.mozilla.org/en-US/docs/Web/JavaScript
+http://getbootstrap.com/getting-started/
+http://jquery.com/
+http://jshint.com/
+http://validator.w3.org/
+
