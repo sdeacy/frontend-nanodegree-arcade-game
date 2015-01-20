@@ -60,17 +60,19 @@ var Engine = (function(global) {
          * function again as soon as the browser is able to draw another frame.
          */
         win.requestAnimationFrame(main);
-    };
+    }
 
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
      * game loop.
      */
     function init() {
+
         reset();
         lastTime = Date.now();
         timer();
         main();
+
     }
 
 
@@ -89,7 +91,7 @@ var Engine = (function(global) {
     }
 
     function checkCollisions() {
-        allEnemies.forEach(function(enemy) {
+        allEnemies.forEach(function(enemy) {                                    //checks if player and enemy are in approx same place on screen
             if ( ((player.x - 50) < enemy.x) && (enemy.x < (player.x + 50 ))){
                 if ( ((player.y - 50) < enemy.y) && (enemy.y < (player.y + 50 ))){
                     alert("munch");
@@ -97,13 +99,10 @@ var Engine = (function(global) {
                 }
             }
         });
-        console.log(player.y);
-        if(player.y < 0){
+        if(player.y < 0){                                       //checks if player has gone into water
             alert("splash");
             reset();
         }
-
-        //console.log(player.x);
     }
 
     /* This is called by the update function  and loops through all of the
@@ -118,6 +117,7 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+        gem.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -135,6 +135,8 @@ var Engine = (function(global) {
                 'images/stone-block.png',   // Row 1 of 3 of stone
                 'images/stone-block.png',   // Row 2 of 3 of stone
                 'images/stone-block.png',   // Row 3 of 3 of stone
+                'images/stone-block.png',   // Row 3 of 3 of stone
+
                 'images/grass-block.png',   // Row 1 of 2 of grass
                 'images/grass-block.png'    // Row 2 of 2 of grass
             ],
@@ -163,6 +165,8 @@ var Engine = (function(global) {
         renderEntities();
     }
 
+
+
     /* This function is called by the render function and is called on each game
      * tick. It's purpose is to then call the render functions you have defined
      * on your enemy and player entities within app.js
@@ -176,16 +180,25 @@ var Engine = (function(global) {
         });
 
         player.render();
+        gem.render();
     }
 
     function timer(){
         var time = 30;
         var timer = setInterval(function() {
-            $('#timer span').text(time--);
+            $('#timer').text(time--);
             if (time < 0 ) {
                 clearInterval(timer);
-                alert("Time up");
-                reset();
+                if(confirm("Time up.....New game??")) {
+                    player.score = 0;
+                    $("#score").text(player.score);
+                    init();
+                }
+                else {
+                    document.querySelector('#canvasContainer').removeChild(canvas);
+                    $(".gameInfo").css("display","none");
+                    $("#canvasContainer").html("<p>GoodBye</p>");
+                }
             }
         }, 1000);
     }
@@ -198,7 +211,6 @@ var Engine = (function(global) {
         console.log("resetting...");
         player.x = 250;
         player.y = 350;
-        //alert("try again");
     }
 
     /* Go ahead and load all of the images we know we're going to need to
@@ -214,7 +226,12 @@ var Engine = (function(global) {
         'images/char-cat-girl.png',
         'images/char-horn-girl.png',
         'images/char-pink-girl.png',
-        'images/char-princess-girl.png'
+        'images/char-princess-girl.png',
+        'images/Gem-Blue.png',
+        'images/Gem-Green.png',
+        'images/Gem-Orange.png',
+        'images/Rock.png',
+        'images/Key.png'
     ]);
     Resources.onReady(init);
 
