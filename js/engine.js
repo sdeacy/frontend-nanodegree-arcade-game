@@ -185,10 +185,13 @@ var Engine = (function(global) {
 
     function timer(){
         var time = 30;
+        var highScore = localStorage.getItem("HighScore");
+        $("#highScore").text(highScore);
         var timer = setInterval(function() {
             $('#timer').text(time--);
             if (time < 0 ) {
                 clearInterval(timer);
+                highScoreStore();
                 if(confirm("Time up.....New game??")) {
                     player.score = 0;
                     $("#score").text(player.score);
@@ -201,6 +204,23 @@ var Engine = (function(global) {
                 }
             }
         }, 1000);
+    }
+
+    function highScoreStore() {
+        console.log("high");
+        if (supports_html5_storage()) {                           //check if local storage available
+            if (localStorage.getItem("HighScore") < player.score) {
+                localStorage.setItem("HighScore", player.score);
+            }
+        }
+    }
+
+    function supports_html5_storage() {                                     //http://diveintohtml5.info/storage.html
+        try {
+            return 'localStorage' in window && window['localStorage'] !== null;
+        } catch (e) {
+            return false;
+        }
     }
 
     /* This function does nothing but it could have been a good place to
