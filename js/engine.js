@@ -185,9 +185,12 @@ var Engine = (function(global) {
 
     function timer(){
         var time = 30;
-        var highScore = localStorage.getItem("HighScore");
-        $("#highScore").text(highScore);
-        var timer = setInterval(function() {
+        if (supports_html5_storage()) {                           //check if local storage available
+            var highScore = localStorage.getItem("HighScore");      //display previous high score
+            $("#highScore").text(highScore);
+        }
+
+        var timer = setInterval(function() {                    //countdown timer
             $('#timer').text(time--);
             if (time < 0 ) {
                 clearInterval(timer);
@@ -198,22 +201,21 @@ var Engine = (function(global) {
                     init();
                 }
                 else {
-                    document.querySelector('#canvasContainer').removeChild(canvas);
+                    document.querySelector('#canvasContainer').removeChild(canvas);  //remove the game board and display a parting message
                     $(".gameInfo").css("display","none");
                     $("#canvasContainer").html("<p>GoodBye</p>");
                 }
             }
-        }, 1000);
+        }, 1000);                                               //countdown intervel = 1000, ie 1 second
     }
 
     function highScoreStore() {
-        console.log("high");
         if (supports_html5_storage()) {                           //check if local storage available
             if (localStorage.getItem("HighScore") < player.score) {
                 localStorage.setItem("HighScore", player.score);
             }
         }
-    }
+        }
 
     function supports_html5_storage() {                                     //http://diveintohtml5.info/storage.html
         try {
@@ -228,7 +230,7 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        console.log("resetting...");
+        //console.log("resetting...");
         player.x = 250;
         player.y = 350;
     }

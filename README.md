@@ -1,6 +1,10 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
+- When page loads, player has 30 seconds to collect as many prizes as possible. If player gets munched by the bugs or falls
+ it the water, player gets a new life by pressing the return key. There are unlimited lives in this version.
+ - Player can choose a different character from the list of characters on the left side of the screen.
+ - Player's high score is recorded using local browser storage, if available.
+- when 30 seconds are up, player has the option to play again, or quit the game. If player quits the game, player must
+refresh the page to start again.
 
-for self-checking their submission.
